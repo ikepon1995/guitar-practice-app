@@ -16,11 +16,9 @@ RUN gem install bundler && bundle install --without development test
 # アプリケーションのコードをコピー
 COPY . .
 
-# アセットのプリコンパイル
-RUN RAILS_ENV=production bundle exec rake assets:precompile
 
 # ポート解放
 EXPOSE 3000
 
 # サーバー起動
-CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
+CMD ["bash", "-c", "bundle exec rails assets:precompile && rails server -b 0.0.0.0 -e production"]
