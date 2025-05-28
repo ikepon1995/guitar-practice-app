@@ -82,8 +82,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: guitar_practice_app_production
-  username: guitar_practice_app
-  password: <%= ENV["GUITAR_PRACTICE_APP_DATABASE_PASSWORD"] %>
