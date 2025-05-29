@@ -1,4 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>ギター練習アプリ</p>
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-blue-500 text-white text-center px-4">
+  <h1 class="text-4xl md:text-6xl font-extrabold mb-4">ギターアプリ</h1>
+  <p class="text-lg md:text-2xl mb-8">音楽の世界へようこそ。</p>
+
+  <div class="space-x-4">
+    <%= link_to "新規登録", new_user_registration_path, class: "bg-white text-indigo-600 font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-100 transition" %>
+    <%= link_to "ログイン", new_user_session_path, class: "bg-white text-indigo-600 font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-100 transition" %>
+  </div>
 </div>
