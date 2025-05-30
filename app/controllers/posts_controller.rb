@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: "投稿が作成されました！"
     else
       render :new, status: :unprocessable_entity
+    end
   end
 
   def edit

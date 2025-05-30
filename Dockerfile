@@ -3,7 +3,10 @@ FROM ruby:3.2.3
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs postgresql-client && \
+    npm install -g yarn
 
 WORKDIR /app
 
