@@ -1,0 +1,24 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>投稿一覧</h2>
+    <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @posts.any? %>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text text-muted"><%= truncate(post.body, length: 100) %></p>
+              <%= link_to "続きを読む", post_path(post), class: "btn btn-outline-primary btn-sm" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>投稿はまだありません。</p>
+  <% end %>
+</div>

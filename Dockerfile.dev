@@ -3,26 +3,26 @@ FROM ruby:3.2.3
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
 
-# 必要なライブラリをインストール
-RUN apt-get update -qq && apt-get install -y \
-  build-essential \
-  libpq-dev \
-  nodejs \
-  postgresql-client \
-  libxml2-dev \
-  libxslt1-dev
+# Node.js（公式方法）を含めて依存をインストール
+RUN apt-get update -qq && apt-get install -y curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y \
+    build-essential \
+    libpq-dev \
+    nodejs \
+    postgresql-client \
+    libxml2-dev \
+    libxslt1-dev
 
-# アプリケーションディレクトリを作成
+# yarn をインストール
+RUN npm install -g yarn
+
 WORKDIR /app
 
-# GemfileとGemfile.lockをコピー
 COPY Gemfile Gemfile.lock ./
 
-# Bundlerインストール
 RUN gem install bundler && bundle install
 
-# アプリケーションのコードをコピー
 COPY . .
 
-# Railsサーバーを起動（PIDファイルの削除込み）
 CMD ["bash", "-c", "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"]

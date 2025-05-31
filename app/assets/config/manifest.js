@@ -1,2 +1,2 @@
-//= link_tree ../builds
-//= link application.css
+//= link_tree ../images
+//= link application.js

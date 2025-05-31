@@ -1,0 +1,13 @@
+<%= form_with model: @post, local: true do |f| %>
+  <div class="mb-4">
+    <%= f.label :title, class: "block font-semibold" %>
+    <%= f.text_field :title, class: "form-input w-full mt-1 border p-2" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :body, class: "block font-semibold" %>
+    <%= f.text_area :body, class: "form-textarea w-full mt-1 border p-2" %>
+  </div>
+
+  <%= f.submit class: "bg-indigo-500 text-white px-4 py-2 rounded" %>
+<% end %>
