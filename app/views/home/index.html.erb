@@ -1,9 +1,11 @@
-<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-blue-500 text-white text-center px-4">
-  <h1 class="text-4xl md:text-6xl font-extrabold mb-4">ギターアプリ</h1>
-  <p class="text-lg md:text-2xl mb-8">音楽の世界へようこそ。</p>
+<div class="min-h-screen flex flex-col justify-start items-center bg-gray-100 text-center px-4 pt-20">
+  <h1 class="text-4xl md:text-6xl font-extrabold mb-12 text-pink-400">ギターアプリ</h1>
+  <p class="text-lg md:text-2xl mb-8 text-gray-700">音楽の世界へようこそ。</p>
 
-  <div class="space-x-4">
-    <%= link_to "新規登録", new_user_registration_path, class: "bg-white text-indigo-600 font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-100 transition" %>
-    <%= link_to "ログイン", new_user_session_path, class: "bg-white text-indigo-600 font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-100 transition" %>
+  <div class="flex flex-col space-y-4 w-full max-w-xs">
+    <%= link_to "新規登録", new_user_registration_path,
+        class: "bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-blue-700 transition" %>
+    <%= link_to "ログイン", new_user_session_path,
+        class: "bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-blue-700 transition" %>
   </div>
 </div>
