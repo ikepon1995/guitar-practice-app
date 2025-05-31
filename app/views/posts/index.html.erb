@@ -1,13 +1,24 @@
-<h1 class="text-2xl font-bold mb-4">投稿一覧</h1>
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>投稿一覧</h2>
+    <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
+  </div>
 
-<%= link_to "新規投稿", new_post_path, class: "bg-blue-500 text-white px-4 py-2 rounded" if user_signed_in? %>
-
-<div class="mt-6 space-y-4">
-  <% @posts.each do |post| %>
-    <div class="p-4 border rounded bg-white shadow">
-      <h2 class="text-xl font-semibold"><%= link_to post.title, post_path(post), class: "text-indigo-600 hover:underline" %></h2>
-      <p class="text-gray-700 mt-2"><%= truncate(post.body, length: 100) %></p>
-      <p class="text-sm text-gray-500 mt-1">投稿者: <%= post.user.name %></p>
+  <% if @posts.any? %>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text text-muted"><%= truncate(post.body, length: 100) %></p>
+              <%= link_to "続きを読む", post_path(post), class: "btn btn-outline-primary btn-sm" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
+  <% else %>
+    <p>投稿はまだありません。</p>
   <% end %>
 </div>

@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "投稿が更新されました！"
+      redirect_to posts_path, notice: "投稿が作成されました！"
     else
       render :edit, status: :unprocessable_entity
     end
