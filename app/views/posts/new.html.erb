@@ -8,12 +8,12 @@
         <div class="card-body">
           <%= form_with(model: @post, local: true) do |form| %>
             <div class="mb-3">
-              <%= form.label :title, class: "form-label" %>
+              <%= form.label :title,"タイトル", class: "form-label" %>
               <%= form.text_field :title, class: "form-control" %>
             </div>
 
             <div class="mb-3">
-              <%= form.label :body, class: "form-label" %>
+              <%= form.label :body,"本文", class: "form-label" %>
               <%= form.text_area :body, rows: 5, class: "form-control" %>
             </div>
 

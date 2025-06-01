@@ -1,11 +1,16 @@
-<div class="min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light text-center px-4">
-  <h1 class="display-3 text-primary fw-bold mb-4">ギターアプリ</h1>
-  <p class="lead text-secondary mb-5">音楽の世界へようこそ。</p>
+<div class="container py-5 text-center">
+  <h1 class="display-4 text-primary fw-bold mb-4">ギターアプリ</h1>
+  <p class="lead text-muted mb-5">
+    ギターアプリは、ギターの練習記録を残し、他のユーザーと共有できるWebアプリです。<br>
+    日々の練習を投稿し、モチベーションを維持しながら上達を目指しましょう。
+  </p>
 
-  <div class="d-grid gap-3 col-6 mx-auto">
-    <%= link_to "新規登録", new_user_registration_path,
-      class: "btn btn-primary btn-lg" %>
-    <%= link_to "ログイン", new_user_session_path,
-      class: "btn btn-outline-primary btn-lg" %>
-  </div>
+  <% if user_signed_in? %>
+    <%= link_to "投稿一覧へ", posts_path, class: "btn btn-success btn-lg" %>
+  <% else %>
+    <div class="d-grid gap-3 col-6 mx-auto">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-lg" %>
+    </div>
+  <% end %>
 </div>
