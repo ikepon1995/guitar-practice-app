@@ -1,0 +1,7 @@
+.bg-image {
+  background-image: url("mikkel-bech-OwMIhcZu_X8-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}

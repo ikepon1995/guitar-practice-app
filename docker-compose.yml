@@ -13,12 +13,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
+    command: ./bin/dev
     volumes:
       - .:/app
       - /app/node_modules
     ports:
-      - "3000:3000"
+      - "3002:3002"
     depends_on:
       - db
     environment:
