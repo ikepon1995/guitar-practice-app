@@ -1,0 +1,19 @@
+<%# 未ログインは作成不可にする %>
+<% if user_signed_in? %>
+  <%= form_with model: [post, Comment.new], class: "mb-4" do |f| %>
+    <div class="mb-3">
+      <%= f.label :comment, "コメント", class: "form-label" %>
+      <%= f.text_area :comment, rows: 3, class: "form-control", placeholder: "コメントを入力…" %>
+      <% if defined?(comment) && comment&.errors&.any? %>
+        <div class="text-danger mt-1">
+          <%= comment.errors.full_messages.to_sentence %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit "送信", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <div class="alert alert-info mb-4">
+    コメントするには <%= link_to "ログイン", new_user_session_path %> が必要です。
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="border rounded p-3 mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <strong><%= comment.name.presence || comment.user&.email %></strong>
+    <small class="text-muted"><%= l comment.created_at, format: :short %></small>
+  </div>
+  <div class="mb-2">
+    <%= simple_format(h(comment.comment)) %>
+  </div>
+  <% if user_signed_in? && (comment.user_id == current_user.id || (comment.post.respond_to?(:user_id) && comment.post.user_id == current_user.id)) %>
+    <%= button_to "削除",
+      post_comment_path(comment.post, comment),
+      method: :delete,
+      form: { data: { turbo_confirm: "削除しますか？" }, class: "d-inline" },
+      class: "btn btn-sm btn-outline-danger" %>
+  <% end %>
+</div>
