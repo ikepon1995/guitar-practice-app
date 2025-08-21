@@ -12,6 +12,31 @@
             <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ms-2" %>
             <%= link_to "一覧に戻る", posts_path, class: "btn btn-secondary ms-2" %>
           </div>
+          <hr class="my-3" id="like">
+
+<div class="d-flex align-items-center gap-2">
+  <span class="text-muted">いいね数：<%= @post.likes.count %></span>
+
+  <% if user_signed_in? %>
+    <% if current_user.liked?(@post) %>
+      <%= button_to "いいねを外す",
+            post_like_path(@post),
+            method: :delete,
+            form: { data: { turbo_confirm: "外しますか？" }, class: "d-inline" },
+            class: "btn btn-outline-danger btn-sm" %>
+    <% else %>
+      <%= button_to "いいね",
+            post_like_path(@post),
+            method: :post,
+            form: { class: "d-inline" },
+            class: "btn btn-outline-primary btn-sm" %>
+    <% end %>
+  <% else %>
+    <span class="ms-2">
+      <%= link_to "ログインしていいね", new_user_session_path, class: "btn btn-sm btn-primary" %>
+    </span>
+  <% end %>
+</div>
         </div>
       </div>
 

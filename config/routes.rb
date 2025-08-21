@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # 投稿機能（あとで作成）
   resources :posts do
     resources :comments, only: [:create, :destroy]
+    resource :like, only: [:create, :destroy]
   end
 
   root "home#index"
